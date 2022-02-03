@@ -16,10 +16,14 @@
   padding: 10px;
   color: white;
   font-size: 3rem;
-  background-color: #008B8B;
+  background-color: #008B8B
 
 }
 
 .bottom:hover {
   opacity: 0.5;
+}
+
+.botan {
+  text-align: center;
 }
