@@ -1,0 +1,30 @@
+.botton {
+  background-color: orange;
+  padding: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+p {
+  border-bottom: 1px solid #2f5167;
+  padding: 0 0 20px 0;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  background-color: orange;
+}
+
+.blank {
+    text-align:center;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+}
