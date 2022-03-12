@@ -6,20 +6,34 @@
 
 
     <% require 'pg' %>
-
     <% connection = PG::connect(dbname: "goya") %>
     <% connection.internal_encoding = "UTF-8" %>
 
 
-    <% result = connection.exec("SELECT quality, give_for FROM crops WHERE not give_for = '自家消費' AND quality = false;") %>
+    <% result = connection.exec("SELECT * FROM crops WHERE not give_for = '自家消費';") %>
     <% data = [] %>
 
     <% result.each do |record| %>
-      <%  data << "自家消費ではないもの：#{record["give_for"]} 品質：#{record["quality"]}" %>
+      <% data << "1：#{record["length"]} 2：#{record["weight"]} 3：#{record["quality"]} 4:#{record["give_for"]} 5:#{record["date"]}"%>
     <% end %>
 
     <form action="goya.cgi" method="POST">
        ボタンを押してください<br><br>
+       <!-- valueには、送りたいデータを代入する -->
+       <!-- name="goya"を、情報の目印とする -->
+      <input type="text" name="goya" value="<%= data.join(' ') %>">
+      <input type="submit" name="送信" >
+    </form>
+
+    <% result = connection.exec("SELECT * FROM crops WHERE quality = false;") %>
+    <% data = [] %>
+
+    <% result.each do |record| %>
+      <% data << "1：#{record["length"]} 2：#{record["weight"]} 3：#{record["quality"]} 4:#{record["give_for"]} 5:#{record["date"]}"%>
+    <% end %>
+
+    <form action="goya.cgi" method="POST">
+       ボタンを押してください2<br><br>
        <!-- valueには、送りたいデータを代入する -->
        <!-- name="goya"を、情報の目印とする -->
       <input type="text" name="goya" value="<%= data.join(' ') %>">
